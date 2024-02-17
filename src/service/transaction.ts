@@ -1,3 +1,5 @@
+import { knex } from "../config/db";
+
 type extratoBancario = {
   saldo: {
     total: number;
@@ -14,7 +16,11 @@ type extratoBancario = {
 
 export class Transaction {
   async createTransaction() {
-    
+    return knex('transaction').insert({
+      value: 123,
+      type: 'c',
+      description: 'teste'
+    })
   }
 
   async getExtract(): Promise<extratoBancario> {
